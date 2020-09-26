@@ -96,4 +96,4 @@ To stop the process, press 'q'.
 
 ## Warnings
 
-**The photos must be in the same folder as the script.py**
+**The photos must be in the same folder as the script**
