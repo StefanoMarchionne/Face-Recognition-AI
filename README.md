@@ -14,17 +14,23 @@ Replace the name "foto.jpeg" with the relative name and extension of the photo y
 
 ```python
 # loading images
-known_image1 = face_recognition.load_image_file("foto1.jpg") # insert name and exstension of desired photo
+known_image1 = face_recognition.load_image_file("foto1.jpeg") # insert name and exstension of desired photo
 known_image2 = face_recognition.load_image_file("foto2.jpeg") # insert name and exstension of desired photo
 known_image3 = face_recognition.load_image_file("foto3.jpeg") # insert name and exstension of desired photo
 known_image4 = face_recognition.load_image_file("foto4.jpeg") # insert name and exstension of desired photo
 known_image5 = face_recognition.load_image_file("foto5.jpeg") # insert name and exstension of desired photo
 ```
+
 To use more or less photos add or delete the following lines of code.
 To add, replacing "N" with a number different from the previous ones:
 
 ```python
 known_imageN = face_recognition.load_image_file("fotoN.jpg")
+```
+Then change the letter "N" progressively to "target_encodingN" for each photo added:
+
+```python
+target_encodingN = face_recognition.face_encodings(known_imageN)[0]
 ```
 
 As another change, in the following part of the code, instead of "****", replace it with the desired name for the person corresponding to the photo previously assigned to the variable "known_imageN" ("N" is the number of the variable to be distinguished from the others as mentioned above).
@@ -66,12 +72,12 @@ Here is an example:
                 match5 = face_recognition.compare_faces([target_encoding5], frame_face_encoding)[0]
                 if match5:
                    label = "****5" # insert desired name for recognition instead of ****5
-                #-------------------
+                #-------HERE------------
                 else:
                     matchN = face_recognition.compare_faces([target_encodingN], frame_face_encoding)[0]
                     if matchN:
                        label = "****N" # insert desired name for recognition instead of ****N
-                #--------------------
+                #-------HERE-------------
                     else: label = "Unknown"
 (next code)...
 ```
